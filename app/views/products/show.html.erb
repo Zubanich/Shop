@@ -2,9 +2,34 @@
   <div class='container'>
     <div class='row'>
       <div class='col-md-6 text-center mb-sm-5'>
-        <% @product.photos.last(1).each do |x|%>
-        <img style='max-width: 100%;' src='<%= x.url %>' alt=''/>
-        <%end%>
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <% if @product.photos.length > 1 %>
+              <% @product.photos.each do |x| %>
+                <li data-target="#carouselExampleIndicators" data-slide-to="<%= x %>" class="<%= x == 0 ? 'active' : '' %>">
+                <% end %>
+              <% end %>
+          </ol>
+          <div class="carousel-inner">
+            <% @product.photos.each_with_index do |image, index| %>
+              <div class="<%=  index == 0 ? 'carousel-item active' : 'carousel-item' %>">
+                <%= image_tag image.url, class:"d-block w-100"%>
+              </div>
+            <% end %>
+          </div>
+          <% if @product.photos.length > 1  %>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          <%end%>
+
+        </div>
+
       </div>
       <div class='col-md-6 mb-sm-5'>
         <div class='card'>

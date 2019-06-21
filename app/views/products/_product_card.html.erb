@@ -1,10 +1,12 @@
 <div class='product-card'>
   <p class='text-center'>
-    <%= link_to product do %>
-    <%# @product.photos.last(1).each do |x|%>
-    <img style='max-width: 100%;' src='<%# x.url %>' alt=''/>
-    <%#end%>
-    <% end %>
+    <p class='text-center'>
+      <%= link_to product do %>
+        <% product.photos.last(1).each do |x| %>
+        <img style='max-width: 100%;' src='<%= x.url %>' alt=''/>
+          <% end %>
+      <% end %>
+    </p>
   </p>
   <h4>
     <%= link_to product do %>
