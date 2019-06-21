@@ -24,4 +24,4 @@ module LineItemQuery
       scope.find_by(product_id: product_id)
     end
   end
-enda
+end

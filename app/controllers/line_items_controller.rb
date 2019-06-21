@@ -1,27 +1,23 @@
 class LineItemsController < ApplicationController
+  check_user
+  check_order
+
   def create
-      @result = CartService::LineItem::Create.call(current_order, **create_params)
+    @result = CartService::LineItem::Create.call(current_order, create_params)
 
-      if @result.success?
-        redirect_to :back
-      else
-        redirect_with_error :back, @result.value
-      end
-    end
+    redirect_back_result(@result)
+  end
 
-    def destroy
-      @result = CartService::LineItem::Delete.call(current_order, params[:product_id])
+  def destroy
+    product = LineItem.find(params[:id])&.product
+    @result = CartService::LineItem::Delete.call(current_order, product&.id)
 
-      if @result.success?
-        redirect_to :back
-      else
-        redirect_with_error :back, @result.value
-      end
-    end
+    redirect_back_result(@result)
+  end
 
-    private
+  private
 
-    def create_params
-      params.permit(:product_id, :quantity)
-    end
+  def create_params
+    params.require(:line_item).permit(:product_id, :quantity)
+  end
   end
