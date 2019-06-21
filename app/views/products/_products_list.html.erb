@@ -1,0 +1,9 @@
+<% products.each_slice(4) do | products_group | %>
+  <div class='row'>
+    <% products_group.each do |product| %>
+      <div class='col-sm-6 col-xs-12'>
+        <%= render 'product_card', product: product %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
