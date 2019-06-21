@@ -4,5 +4,9 @@
 <%= x.price%>
 <br>
 <%= x.description%>
+<% @product.photos.last(1).each do |x| %>
+<%= image_tag x.url, style:"width:300px;"%>
+<% end %>
+
 <hr>
 <%end%>

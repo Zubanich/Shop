@@ -3,3 +3,7 @@
 <%= @product.price%>
 <br>
 <%= @product.description%>
+<br>
+<% @product.photos.each do |x| %>
+<%= image_tag x.url, style:"width:500px;"%>
+<% end %>
