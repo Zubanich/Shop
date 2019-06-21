@@ -4,6 +4,6 @@ class CardsController < ApplicationController
 
   def show
     @line_items = current_order.line_items.includes(:product)
-    @summ = @line_items.any? ? @line_items.map{|l| l.product.price }.sum : 0
+    @summ = @line_items.any? ? @line_items.map{|l| l.product.price * l.quantity }.sum : 0
   end
 end
