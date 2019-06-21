@@ -34,4 +34,12 @@ class ApplicationController < ActionController::Base
   def redirect_with_error(path, error)
     redirect_to path, flash: { error: [error].flatten.joins(', ') }
   end
+
+  def redirect_back_result(result)
+    if result.success?
+      redirect_back fallback_location: root_path, flash: { success: 'Success' }
+    else
+      redirect_back fallback_location: root_path, flash: { error: [result.value].flatten.join(', ') }
+    end
+  end
 end

@@ -1,12 +1,6 @@
-<% @products.each do |x|%>
-<%= x.name%>
-<br>
-<%= x.price%>
-<br>
-<%= x.description%>
-<% @product.photos.last(1).each do |x| %>
-<%= image_tag x.url, style:"width:300px;"%>
-<% end %>
 
-<hr>
-<%end%>
+<div class='album'>
+  <div class='container'>
+    <%= render 'products_list', products: @products %>
+  </div>
+</div>
