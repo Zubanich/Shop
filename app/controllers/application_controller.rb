@@ -29,4 +29,9 @@ class ApplicationController < ActionController::Base
   def current_order
     @current_order ||= order_fetcher.value if order_fetcher.success?
   end
+
+
+  def redirect_with_error(path, error)
+    redirect_to path, flash: { error: [error].flatten.joins(', ') }
+  end
 end
