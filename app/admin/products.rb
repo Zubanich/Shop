@@ -7,7 +7,7 @@ ActiveAdmin.register Product do
         f.input :description
         f.file_field :photos, multiple: true
         f.input :price
-      #  f.input :status_id, :as => :select, :collection => Status.all.map{|u| ["#{u.name}", u.id]}
+        f.input :status_id, :as => :select, :collection => Status.all.map{|u| ["#{u.name}", u.id]}
       end
      f.actions
   end

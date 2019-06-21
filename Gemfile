@@ -46,9 +46,10 @@ gem 'activeadmin'
 
 gem 'operators-service', '~> 0.2.1'
 
-gem 'bootstrap', '~> 4.3.1'
+gem 'bootstrap'
 gem 'jquery-rails'
 gem 'active_link_to'
+gem "font-awesome-rails"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

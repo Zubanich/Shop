@@ -55,4 +55,26 @@
     </div>
     <%= render 'products_list', products: @recommended_products %>
   </div>
+
+  <%= form_for :comment, url:comments_path do |f| %>
+  <div class="modal-header">
+    <h5 class="modal-title">Новий коментар</h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <span aria-hidden="true" class="fa fa-times"></span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <%= f.text_area :text, class: "form-control", :rows => 8 %>
+    <%= f.hidden_field :product_id, value: @product.id%>
+  </div>
+  <div class="modal-footer">
+    <%= f.submit "Прокоментувати", class:"btn btn-sm btn-primary"%>
+  </div>
+<%end%>
+<ul class="list-group">
+  <% Comment.where(product_id: @product.id).each do |comment| %>
+    <%=render 'comments/comment', comment:comment %>
+  <%end%>
+</ul>
 </div>

@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
  has_many :orders
+ has_many :comments, dependent: :destroy
 
  enum currency_type: {
    usd: 0

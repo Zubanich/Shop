@@ -1,4 +1,5 @@
 class Product < ApplicationRecord
+  belongs_to :status
   validates :name, :price, presence: true
   scope :random, -> { order('random()') }
 
