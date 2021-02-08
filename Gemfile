@@ -40,7 +40,7 @@ gem 'devise'
 
 gem 'faker'
 
-gem 'carrierwave', '~> 1.0'
+gem 'carrierwave', '~> 1.3'
 
 gem 'activeadmin'
 
